@@ -1,0 +1,10 @@
+function Newpath = PathChange(Oldpath)
+
+f = find(Oldpath =='\');
+Newpath = '/global/workspace';
+if size(f,2) == 1
+    Newpath = [Newpath filesep Oldpath]
+for i = 2:size(f,2)
+    pathsep = Oldpath(f(i-1)+1:f(i)-1);
+    Newpath = [Newpath filesep pathsep];
+end
